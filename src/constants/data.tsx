@@ -127,7 +127,7 @@ export const TESTIMONIALS = [
 ];
 
 export const socialLinks = [
-  { Icon: Linkedin, value: "Tracks Communication", href: "", label: "LinkedIn", color: "hover:text-blue-400" },
+  { Icon: Linkedin, value: "Tracks Communication", href: "https://www.linkedin.com/in/tracks-communications-24299633b", label: "LinkedIn", color: "hover:text-blue-400" },
   { Icon: Instagram, value: "Tracks Communication", href: "https://www.instagram.com/tracks_communications/", label: "Instagram", color: "hover:text-pink-500" },
   {
     Icon: Phone,
