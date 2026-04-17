@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-brand-primary: #3b82f6;
+  /* Blue */
+  --color-brand-secondary: #06b6d4;
+  /* Cyan */
+  --color-brand-accent: #6366f1;
+  /* Indigo */
+}
+
+:root {
+  --bg: #0b0f19;
+  /* Deep Blue requested */
+  --bg-gradient: linear-gradient(135deg, #0b0f19 0%, #111827 50%, #1f2937 100%);
+  --text: #ffffff;
+  --surface: rgba(255, 255, 255, 0.06);
+  /* Slightly increased for visibility */
+  --border: rgba(255, 255, 255, 0.1);
+  /* Slightly more defined border */
+  --muted: rgba(255, 255, 255, 0.5);
+  --card-hover: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] {
+  --bg: #f8fafc67;
+  /* Very Light Blue/White */
+  --bg-gradient: linear-gradient(135deg, #828b96 0%, #cfe0f1 100%);
+  --text: #0f172a;
+  /* Dark Blue */
+  --surface: rgba(15, 23, 42, 0.04);
+  /* Slightly increased for visibility */
+  --border: rgba(15, 23, 42, 0.08);
+  /* Slightly more defined border */
+  --muted: rgba(15, 23, 42, 0.5);
+  --card-hover: rgba(15, 23, 42, 0.06);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    color: var(--text);
+    @apply font-sans antialiased selection:bg-brand-primary/30 transition-colors duration-300;
+  }
+}
+
+.glass-card {
+  background-color: var(--surface);
+  border-color: var(--border);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  /* Inner reflection */
+  @apply backdrop-blur-2xl border rounded-3xl transition-all duration-500;
+}
+
+.glass-card:hover {
+  background-color: var(--card-hover);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 40px rgba(59, 130, 246, 0.1);
+  @apply border-brand-primary/30;
+}
+
+.text-glow {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-500;
+  filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.4));
+}
+
+.nav-link-modern {
+  color: var(--muted);
+  @apply text-sm font-semibold hover:text-brand-primary transition-all relative py-2;
+}
+
+.nav-link-modern.active {
+  color: var(--text);
+}
+
+.nav-link-modern.active::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-full h-0.5 bg-brand-primary rounded-full;
+}
+
+.hero-gradient {
+  background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
+}
